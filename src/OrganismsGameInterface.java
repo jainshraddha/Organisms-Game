@@ -17,7 +17,7 @@ public interface OrganismsGameInterface {
 	 * @param q the secret parameter q - probability of food doubling
 	 * @param players the list of players
 	 */
-	public void initialize(GameConfig game, double p, double q, ArrayList<Player> players);
+	public void initialize(GameConfig game, double p, double q, ArrayList<Player> players) throws InstantiationException, IllegalAccessException;
 	
 	/**
 	 * This method will play the game for the given configuration

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * This class implements the PlayerRoundData class It provides data of how an
  * organism does in each round of the game
@@ -11,7 +13,7 @@ public class PlayerData implements PlayerRoundData {
 	private int playerID;
 	private int energy;
 	private int count;
-
+	private HashMap <Player,IndividualOrganismData> individualData;
 	/**
 	 * This is the constructor for the class. It initializes the data values for
 	 * each of the organisms
@@ -23,33 +25,14 @@ public class PlayerData implements PlayerRoundData {
 	 * @param count
 	 *            - total count of the type of organism
 	 */
-	public PlayerData(int playerID, int energy, int count) {
+	public PlayerData(int playerID, int energy, int count, HashMap <Player,IndividualOrganismData> individualData) {
 		this.playerID = playerID;
+		this.individualData = individualData;
 		this.energy = energy;
 		this.count = count;
 
 	}
 
-	/**
-	 * This is the setter method for the total energy remaining for the organism
-	 * 
-	 * @param energy
-	 *            - the total energy remaining for the organism
-	 */
-	public void setEnergy(int energy) {
-		this.energy = energy;
-	}
-
-	/**
-	 * This is the setter method for the total count of the organism
-	 * 
-	 * @param count
-	 *            - the total number of counts remaining for the type of
-	 *            organism
-	 */
-	public void setCount(int count) {
-		this.count = count;
-	}
 
 	/**
 	 * This is the getter method for the unique player ID
@@ -65,6 +48,18 @@ public class PlayerData implements PlayerRoundData {
 	 */
 	@Override
 	public int getEnergy() {
+		
+		for (Player pl: individualData.keySet()) { 
+			
+			int id = individualData.get(pl).getKey();
+			
+			if (id == playerID) {
+				System.out.println("Existing energy on record: " + energy);
+			int energy1 = individualData.get(pl).getEnergy();
+			System.out.println("Energy for: " + individualData.get(pl).getPlayerInstance() + " = " + energy1);
+			this.energy += energy1; 
+			}		
+		}
 		// TODO Auto-generated method stub
 		return energy;
 	}
@@ -75,8 +70,18 @@ public class PlayerData implements PlayerRoundData {
 	 */
 	@Override
 	public int getCount() {
+		
+		for (Player pl: individualData.keySet()) { 
+			
+			int id = individualData.get(pl).getKey();
+			
+			if (id == playerID) {
+			this.count += 1;
+			}		
+		}
 		// TODO Auto-generated method stub
 		return count;
 	}
 
+	
 }

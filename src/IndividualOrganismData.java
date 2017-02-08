@@ -9,12 +9,14 @@
 public class IndividualOrganismData {
 
 	private int energy;
+	private int key; 
 	private Player playerInstance;
 	//check how to add this, this will make your life very easy 
 	private Player playertype;
 	// private int xCoordinate;
 	// private int yCoordinate;
 	private Point point;
+	private boolean alreadyMovedInRound; 
 
 	/**
 	 * This is the constructor for the class. It initializes the values for the
@@ -29,13 +31,39 @@ public class IndividualOrganismData {
 	 * @param y
 	 *            - y coordinate of the organism
 	 */
-	public IndividualOrganismData(int energy, Player playerInstance, Point point) {
+	public IndividualOrganismData(int energy, Player playerInstance, Point point, int key) {
 		this.energy = energy;
+		alreadyMovedInRound = false;
 		this.playerInstance = playerInstance;
+		this.key = key; 
 		// xCoordinate = x;
 		// yCoordinate = y;
 		this.point = point;
 	}
+
+	
+	
+	
+	public int getKey() {
+		return key;
+	}
+
+
+
+
+	public boolean hasAlreadyMovedInRound() {
+		return alreadyMovedInRound;
+	}
+
+
+
+
+	public void setAlreadyMovedInRound(boolean alreadyMovedInRound) {
+		this.alreadyMovedInRound = alreadyMovedInRound;
+	}
+
+
+
 
 	/**
 	 * This is the getter method for the energy left for the individual organism

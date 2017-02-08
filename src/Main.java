@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 		
 		final double P = 0.1;
 		final double Q = 0.2;
@@ -21,12 +21,12 @@ public class Main {
 		players.add(human2);
 		//players.add(random2);
 		
-		GameConfig game = null; 
+		GameConfig game = new GameConfiguration(); 
 		
 		organisms.initialize(game, P, Q, players);
 		
 		
-		
+	
 	}
 
 }

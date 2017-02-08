@@ -46,7 +46,7 @@ public class HumanPlayer implements Player {
 	//	}
 		
 		Move move = null; 
-		int direction = 1;
+		int direction = rand.nextInt(6);
 
 		switch (direction) {
 		case 0:
