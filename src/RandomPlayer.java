@@ -9,7 +9,7 @@ import java.util.*;
 public class RandomPlayer implements Player {
 
 	private static final String NAME = "Random Player";
-	private int state;
+	private int key;
 	private Random rand;
 	private GameConfig game;
 
@@ -20,7 +20,7 @@ public class RandomPlayer implements Player {
 	 */
 	public void register(GameConfig game, int key) {
 		rand = new Random();
-		state = rand.nextInt(256);
+		this.key = key;
 		this.game = game;
 	}
 
@@ -60,13 +60,13 @@ public class RandomPlayer implements Player {
 			// the third argument is the initial value for that organism's state
 			// variable (passed to its register function)
 			if (direction == 0)
-				m = new Move(Constants.REPRODUCE, Constants.WEST, state);
+				m = new Move(Constants.REPRODUCE, Constants.WEST, key);
 			else if (direction == 1)
-				m = new Move(Constants.REPRODUCE, Constants.EAST, state);
+				m = new Move(Constants.REPRODUCE, Constants.EAST, key);
 			else if (direction == 2)
-				m = new Move(Constants.REPRODUCE, Constants.NORTH, state);
+				m = new Move(Constants.REPRODUCE, Constants.NORTH, key);
 			else
-				m = new Move(Constants.REPRODUCE, Constants.SOUTH, state);
+				m = new Move(Constants.REPRODUCE, Constants.SOUTH, key);
 		}
 		return m;
 	}

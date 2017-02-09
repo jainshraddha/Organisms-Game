@@ -36,15 +36,7 @@ public class HumanPlayer implements Player {
 
 	@Override
 	public Move move(boolean[] food, int[] neighbors, int foodleft, int energyleft) {
-		//check for the correct mathematical equation here
-		//energyLeft = energyleft; 
-		//foodLeft = foodleft; 
-		
-		//if (energyLeft - foodLeft < 0) { 		
-			//energyLeft += 1;
-			//foodLeft -= 1;		
-	//	}
-		
+	
 		Move move = null; 
 		int direction = rand.nextInt(6);
 
@@ -82,12 +74,5 @@ public class HumanPlayer implements Player {
 		}
 		return move;
 	}
-	public int getEnergyLeft() {
-		return energyLeft;
-	}
-	public int getFoodLeft() {
-		return foodLeft;
-	}
 		
-
 }

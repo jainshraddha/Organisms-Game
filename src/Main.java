@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
 
@@ -11,21 +12,31 @@ public class Main {
 		
 		OrganismsGame organisms = new OrganismsGame(); 
 		
-		//Player random1 = new RandomPlayer(); 
+		
 		Player human1 = new HumanPlayer(); 
-		//Player random2 = new RandomPlayer(); 
+		Player random1 = new RandomPlayer();
 		Player human2 = new HumanPlayer(); 
 		
+		Player computer1 = new ComputerPlayer(); 
+		
 		players.add(human1);
-		//players.add(random1);
+	
 		players.add(human2);
-		//players.add(random2);
+		players.add(computer1);
+		players.add
+		(random1);
 		
 		GameConfig game = new GameConfiguration(); 
 		
 		organisms.initialize(game, P, Q, players);
 		
+		ArrayList<PlayerRoundData> prd = organisms.getResults();
+		System.out.println("The final result is: ");
+		for (PlayerRoundData p: prd) { 
+			
+			System.out.println("Player ID: " + p.getPlayerId() + ", count: " + p.getCount() + ", energy:  " + p.getEnergy());
 		
+		}
 	
 	}
 

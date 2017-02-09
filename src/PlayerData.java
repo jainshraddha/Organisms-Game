@@ -13,7 +13,6 @@ public class PlayerData implements PlayerRoundData {
 	private int playerID;
 	private int energy;
 	private int count;
-	private HashMap <Player,IndividualOrganismData> individualData;
 	/**
 	 * This is the constructor for the class. It initializes the data values for
 	 * each of the organisms
@@ -25,9 +24,9 @@ public class PlayerData implements PlayerRoundData {
 	 * @param count
 	 *            - total count of the type of organism
 	 */
-	public PlayerData(int playerID, int energy, int count, HashMap <Player,IndividualOrganismData> individualData) {
+	public PlayerData(int playerID, int energy, int count) {
 		this.playerID = playerID;
-		this.individualData = individualData;
+		
 		this.energy = energy;
 		this.count = count;
 
@@ -49,17 +48,7 @@ public class PlayerData implements PlayerRoundData {
 	@Override
 	public int getEnergy() {
 		
-		for (Player pl: individualData.keySet()) { 
-			
-			int id = individualData.get(pl).getKey();
-			
-			if (id == playerID) {
-				System.out.println("Existing energy on record: " + energy);
-			int energy1 = individualData.get(pl).getEnergy();
-			System.out.println("Energy for: " + individualData.get(pl).getPlayerInstance() + " = " + energy1);
-			this.energy += energy1; 
-			}		
-		}
+
 		// TODO Auto-generated method stub
 		return energy;
 	}
@@ -71,14 +60,6 @@ public class PlayerData implements PlayerRoundData {
 	@Override
 	public int getCount() {
 		
-		for (Player pl: individualData.keySet()) { 
-			
-			int id = individualData.get(pl).getKey();
-			
-			if (id == playerID) {
-			this.count += 1;
-			}		
-		}
 		// TODO Auto-generated method stub
 		return count;
 	}
