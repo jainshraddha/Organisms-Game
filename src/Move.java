@@ -1,5 +1,6 @@
 /**
  * The class for determining how to move.
+ * 
  * @author swapneel
  *
  */
@@ -54,9 +55,9 @@ public class Move {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
-		
+		}
+
 		return "Error";
-		
+
 	}
 }

@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
 /**
- * This class implements the PlayerRoundData class It provides data of how an
- * organism does in each round of the game
+ * This class implements the PlayerRoundData class It provides data of how a
+ * player does in the game
  * 
  * @author ShadyJ
  *
@@ -13,6 +13,7 @@ public class PlayerData implements PlayerRoundData {
 	private int playerID;
 	private int energy;
 	private int count;
+
 	/**
 	 * This is the constructor for the class. It initializes the data values for
 	 * each of the organisms
@@ -26,19 +27,18 @@ public class PlayerData implements PlayerRoundData {
 	 */
 	public PlayerData(int playerID, int energy, int count) {
 		this.playerID = playerID;
-		
+
 		this.energy = energy;
 		this.count = count;
 
 	}
-
 
 	/**
 	 * This is the getter method for the unique player ID
 	 */
 	@Override
 	public int getPlayerId() {
-		// TODO Auto-generated method stub
+
 		return playerID;
 	}
 
@@ -47,9 +47,7 @@ public class PlayerData implements PlayerRoundData {
 	 */
 	@Override
 	public int getEnergy() {
-		
 
-		// TODO Auto-generated method stub
 		return energy;
 	}
 
@@ -59,10 +57,8 @@ public class PlayerData implements PlayerRoundData {
 	 */
 	@Override
 	public int getCount() {
-		
-		// TODO Auto-generated method stub
+
 		return count;
 	}
 
-	
 }

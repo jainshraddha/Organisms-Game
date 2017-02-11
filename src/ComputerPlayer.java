@@ -1,12 +1,22 @@
 import java.util.Random;
 
+/**
+ * This class is an implementation of the Player interface. It is a computer
+ * player, that had a brain of its own which decides the movements for each
+ * round
+ * 
+ * @author ShadyJ
+ *
+ */
 public class ComputerPlayer implements Player {
-	private final int EAT = 6;
 	private static final String NAME = "Computer Player";
 	private int key;
 	private GameConfig game;
 	private int direction = Constants.STAYPUT;
 
+	/**
+	 * This method is used to register the players, along with a key
+	 */
 	@Override
 	public void register(GameConfig game, int key) {
 
@@ -15,23 +25,27 @@ public class ComputerPlayer implements Player {
 
 	}
 
+	/**
+	 * This returns the name of the player
+	 */
 	@Override
 	public String name() {
 
 		return NAME;
 	}
 
+	/**
+	 * This method is the move method - it is called to make the player choose
+	 * the next move for the round
+	 * 
+	 * @return - a Move object
+	 */
 	@Override
 	public Move move(boolean[] food, int[] neighbors, int foodleft, int energyleft) {
 		Move move = null;
 		int childpos = Brain(food, neighbors, foodleft, energyleft);
 		// if don't have energy to move or reproduce, and there is more food in
 		// the cell you eat
-		System.out.println("energy left for computer: " + energyleft);
-		System.out.println("food left for computer" + foodleft);
-		System.out.println("direction selected by computer: " + direction);
-		System.out.println("childposition selected by computer: " + childpos);
-
 		switch (direction) {
 		case 0:
 			move = new Move(Constants.STAYPUT);
@@ -51,27 +65,36 @@ public class ComputerPlayer implements Player {
 		case 5:
 			move = new Move(direction, childpos, key);
 			break;
-		case 6:
-			move = new Move(EAT);
-			break;
 		}
 		return move;
 	}
 
+	/**
+	 * This is the brain code for the computer player. It decides what move to
+	 * make, depending on the information provided to it
+	 * 
+	 * @param food
+	 *            - if there's food available on neighboring cells
+	 * @param neighbors
+	 *            - if the neighboring cells are occupied
+	 * @param foodleft
+	 *            - the amount of food on the current cell
+	 * @param energyleft
+	 *            - the energy left for the organism
+	 * @return
+	 */
 	private int Brain(boolean[] food, int[] neighbors, int foodleft, int energyleft) {
 
 		int childpos = Constants.STAYPUT;
-		System.out.println("direction of childpos" + childpos);
-		System.out.println("Maximum allowed energy: " + game.M());
 
 		if (energyleft < game.v() && foodleft > 0) {
-			direction = EAT;
+			direction = Constants.STAYPUT;
 		}
 		// if energy left is less than half of max, and food is left
 		// eat
 		else if (energyleft < game.M() / 2 && foodleft > 0) {
-			System.out.println("if energy left is less than half of max, and food is left eat");
-			direction = EAT;
+
+			direction = Constants.STAYPUT;
 		}
 		// if energy left is less than half, there is no food on the cell
 		// and the energy left is more than that for moving
@@ -80,7 +103,7 @@ public class ComputerPlayer implements Player {
 		else if (energyleft <= game.M() / 2 && energyleft > game.v() && foodleft == 0) {
 
 			for (int i = 1; i < food.length; i++) {
-				System.out.println("direction: " + i + "food" + food[i]);
+
 				if (food[i] == true) {
 					if (neighbors[i] == 0)
 						direction = i;
